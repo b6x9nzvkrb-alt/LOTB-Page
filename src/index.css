@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 220 20% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 12%;
+
+    --primary: 161 93% 30%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 40%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 10% 55%;
+    --muted-foreground: 220 10% 42%;
+
+    --accent: 166 76% 96%;
+    --accent-foreground: 173 80% 32%;
+
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 85% 97%;
+
+    --border: 220 14% 86%;
+    --input: 220 14% 86%;
+    --ring: 161 93% 30%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 20% 12%;
+    --sidebar-primary: 161 93% 30%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 40%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 220 14% 86%;
+    --sidebar-ring: 161 93% 30%;
+    --chart-1: 158 64% 51%;
+    --chart-2: 141 69% 58%;
+    --chart-3: 172 66% 50%;
+    --chart-4: 82 77% 55%;
+    --chart-5: 220 10% 55%;
+    --sidebar: 0 0% 100%;
+    --font-sans: 'Work Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+    --font-serif: 'Lora', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+    --font-mono: 'Inconsolata', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    --font-heading: 'Impact', 'Arial Narrow', 'Haettenschweiler', sans-serif;
+    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.08), 0 1px 2px -1px hsl(0 0% 0% / 0.06);
+    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.08), 0 1px 2px -1px hsl(0 0% 0% / 0.06);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.07), 0 2px 4px -2px hsl(0 0% 0% / 0.05);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.08), 0 4px 6px -4px hsl(0 0% 0% / 0.04);
+    --shadow-xl: 0 20px 25px -5px hsl(0 0% 0% / 0.08), 0 8px 10px -6px hsl(0 0% 0% / 0.04);
+    --shadow-2xl: 0 25px 50px -12px hsl(0 0% 0% / 0.15);
+    --tracking-normal: 0em;
+    --spacing: 0.25rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background:
+      radial-gradient(1100px 520px at 12% -10%, hsla(199, 92%, 74%, 0.08), transparent 55%),
+      radial-gradient(980px 520px at 88% 0%, hsla(263, 70%, 76%, 0.06), transparent 55%),
+      radial-gradient(980px 680px at 50% 110%, hsla(160, 60%, 52%, 0.05), transparent 58%),
+      hsl(var(--background));
+    background-attachment: fixed;
+  }
+}
+
+@layer utilities {
+  .glass {
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    background: hsla(0, 0%, 100%, 0.72);
+  }
+
+  .glass-card {
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    box-shadow: none;
+  }
+
+  .glass-card-hover {
+    @apply transition-all duration-200;
+  }
+  .glass-card-hover:hover {
+    transform: translateY(-2px);
+  }
+
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+  .scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes slow-drift {
+    0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+    25% { transform: translate(12px, -18px) scale(1.03) rotate(0.5deg); }
+    50% { transform: translate(-8px, 10px) scale(0.97) rotate(-0.3deg); }
+    75% { transform: translate(6px, 14px) scale(1.02) rotate(0.2deg); }
+    100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  }
+
+  .logo-drift {
+    will-change: transform;
+    animation: slow-drift 25s ease-in-out infinite;
+  }
+}
